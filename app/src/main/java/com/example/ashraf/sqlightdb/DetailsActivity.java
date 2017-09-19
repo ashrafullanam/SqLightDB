@@ -1,8 +1,10 @@
 package com.example.ashraf.sqlightdb;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity {
         if(id==0){
             return;
         }
-        Toast.makeText(this, "I am here with "+id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "I am here with "+id, Toast.LENGTH_SHORT).show();
         sqLiteDatabase=studentDataBaseHelper.getReadableDatabase();
 
         Cursor mCursor = sqLiteDatabase.rawQuery("SELECT * FROM "+StudentDataBaseHelper.TABLE_STUDENTS1+" t1,"+StudentDataBaseHelper.TABLE_STUDENTS2+" t2 " +
@@ -80,8 +82,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void onDelete(View view) {
-
-        long value= studedentDataManager.deleteItem(id);
+       /* long value= studedentDataManager.deleteItem(id);
 
 
         if(value<1){
@@ -90,9 +91,33 @@ public class DetailsActivity extends AppCompatActivity {
             Toast.makeText(this, value+" row is deleted", Toast.LENGTH_SHORT).show();
 
         }
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,MainActivity.class));*/
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Dialog");
+        builder.setMessage("Are sure to Delete?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                long value= studedentDataManager.deleteItem(id);
 
 
+                if(value<1){
+
+                }else{
+                    //Toast.makeText(DetailsActivity.this, value+" row is deleted", Toast.LENGTH_SHORT).show();
+
+                }
+                startActivity(new Intent(DetailsActivity.this,MainActivity.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 
 

@@ -104,7 +104,7 @@ public class StudedentDataManager {
 
 
                 }
-              Student student=new Student(name,phone,address,profession);
+              Student student=new Student(id,name,phone,address,profession);
 
 
               students.add(student);

@@ -58,11 +58,11 @@ public class StudentEntryActivity extends AppCompatActivity {
             studedentDataManager = new StudedentDataManager(this);
             long isInserted = studedentDataManager.addStudent(student);
             if (isInserted > 0) {
-                Toast.makeText(this, "" + isInserted, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Index " + isInserted, Toast.LENGTH_SHORT).show();
                 this.finish();
-                //startActivity(new Intent(this, MainActivity.class));
+                 startActivity(new Intent(this, MainActivity.class));
             } else {
-                Toast.makeText(this, "Unable to save data", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Unable to save data", Toast.LENGTH_SHORT).show();
             }
         }
     }
