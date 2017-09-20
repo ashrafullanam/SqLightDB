@@ -78,6 +78,7 @@ public class DetailsActivity extends AppCompatActivity {
         i.putExtra("phone",phone);
         i.putExtra("address",address);
         i.putExtra("profession",profession);
+        this.finish();
         startActivity(i);
     }
 
@@ -105,10 +106,10 @@ public class DetailsActivity extends AppCompatActivity {
                 if(value<1){
 
                 }else{
-                    //Toast.makeText(DetailsActivity.this, value+" row is deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, value+" row is deleted", Toast.LENGTH_SHORT).show();
 
                 }
-                startActivity(new Intent(DetailsActivity.this,MainActivity.class));
+                DetailsActivity.this.finish();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
