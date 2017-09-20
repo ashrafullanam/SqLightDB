@@ -25,18 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"/>
-    <EditText
-        android:id="@+id/addressEt"
-        android:hint="Enter area of student"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
-    <EditText
-        android:id="@+id/profEt"
-        android:hint="Enter Work activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
     <Button
         android:id="@+id/btnSave"
         android:text="save"

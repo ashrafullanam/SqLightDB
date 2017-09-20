@@ -77,6 +77,7 @@ public class AdapterClass extends ArrayAdapter<Student> {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(context,DetailsActivity.class);
+                Toast.makeText(context, ""+students.get(position).getId(), Toast.LENGTH_SHORT).show();
                 i.putExtra("id",(students.get(position).getId()));
                 context.startActivity(i);
             }
