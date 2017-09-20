@@ -41,6 +41,14 @@ public class StudentEntryActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        this.finish();
+
+
+
+    }
     public void save(View view) {
 
         if(id!=0){
@@ -49,8 +57,8 @@ public class StudentEntryActivity extends AppCompatActivity {
 
             studedentDataManager=new StudedentDataManager(this);
             studedentDataManager.update(student,id);
-
-            startActivity(new Intent(this,MainActivity.class));
+            this.finish();
+            //startActivity(new Intent(this,MainActivity.class));
 
         }else {
 

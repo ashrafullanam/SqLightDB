@@ -24,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView= (ListView) findViewById(R.id.studentsList);
         studedentDataManager=new StudedentDataManager(this);
-        students=studedentDataManager.getAllStudent();
-        ArrayAdapter<Student>studentArrayAdapter=new ArrayAdapter<Student>(this,android.R.layout.simple_list_item_1,students);
+        getReadyListView();
+
+        /* ArrayAdapter<Student>studentArrayAdapter=new ArrayAdapter<Student>(this,android.R.layout.simple_list_item_1,students);
         listView.setAdapter(studentArrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -35,12 +36,23 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("id",students.get(position).getId());
                 startActivity(i);
             }
-        });
+        });*/
     }
+
+
 
     public void moveToStudentEntryPage(View view) {
         Intent intent=new Intent(this,StudentEntryActivity.class);
         startActivity(intent);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getReadyListView();
+
+
+
     }
 
 
@@ -63,5 +75,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    private void getReadyListView(){
+        students=studedentDataManager.getAllStudent();
+        AdapterClass customList=new AdapterClass(MainActivity.this, students);
+
+        listView.setAdapter(customList);
     }
 }
